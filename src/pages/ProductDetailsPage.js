@@ -1,6 +1,11 @@
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../feature/products/cartSlice";
 
-function PrductDetailsPage({handleFav, products}){
+function PrductDetailsPage(){
+
+const{items:products}= useSelector((state)=>state.products);
+const dispatch=useDispatch();
 const {id}=useParams();
 
 const product=products.find(product=> product.id === parseInt(id));
@@ -15,7 +20,7 @@ if (!product) {
             <p>{product.description}</p>
             <button
                 className="bg-green-500 p-2 mt-4 rounded text-white"
-                onClick={() => handleFav(product.id)}
+                onClick={() => dispatch(addToCart(product))}
             >
                 Add to Cart
             </button>

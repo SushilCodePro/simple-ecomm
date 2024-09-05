@@ -1,11 +1,13 @@
 
+// import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 
 
-function ProductListPage({handleFav, products, error}){
+function ProductListPage(){
+//    const{items:products}= useSelector((state)=>state.products);
     return(
         <div className="p-2">
-            {error? (<p>error</p>) : (<ProductCard products={products} handleFav={handleFav}/>)}
+            <ProductCard/>
         </div>
     );
 }
